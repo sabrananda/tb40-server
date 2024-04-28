@@ -11,5 +11,9 @@
       "src": "/(.*)",
       "dest": "dist/main.js"
     }
-  ]
+  ],
+
+  "functions": {
+    "*.js": {}
+  }
 }
