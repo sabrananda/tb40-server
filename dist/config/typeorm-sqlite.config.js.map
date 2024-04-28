@@ -1,0 +1,1 @@
+{"version":3,"file":"typeorm-sqlite.config.js","sourceRoot":"","sources":["../../src/config/typeorm-sqlite.config.ts"],"names":[],"mappings":";;;AAuBa,QAAA,aAAa,GAAyB;IACjD,IAAI,EAAE,QAAQ;IACd,QAAQ,EAAE,aAAa;IACvB,QAAQ,EAAE,CAAC,SAAS,GAAG,0BAA0B,CAAC;IAClD,WAAW,EAAE,IAAI;IACjB,UAAU,EAAE,CAAC,uCAAuC,CAAC;CACtD,CAAC"}
