@@ -1,6 +1,6 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { seeder } from 'nestjs-seeder';
-import { typeormConfig } from '../config/typeorm.config';
+import { typeormConfig } from '../config/typeorm-sqlite.config';
 import { Bakat40Entity } from 'src/v1/bakat40/bakat40.entity';
 import { Bakat40Seeder } from './bakat40.seeder';
 import { PerbaikanSeeder } from './perbaikanBakat40Array.seeder';
