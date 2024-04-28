@@ -10,6 +10,8 @@ async function bootstrap() {
         'http://192.168.43.13:3000',
         'http://127.0.0.1:3000',
       ],
+      methods: ['GET', 'POST'],
+      credentials: true,
     });
     await app.listen(3001);
   } catch (error) {
