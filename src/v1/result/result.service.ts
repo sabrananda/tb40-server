@@ -34,98 +34,105 @@ export class ResultService {
 
   async getAssessmentResult(body: PostAssesmentDTO): Promise<any> {
     const nama = body.nama;
-    // const nama = body.nama.charAt(0).toUpperCase() + body.nama.slice(1);
-    const ranks40 = bakat40Handler(body.skor40);
-    const ranks18 = bakat18Handler(body.skor40);
-    const ranks6 = bakat6Handler(body.skor40);
-    const ranks3 = bakat3Handler(body.skor40);
-    const introvertAverage = introvertAverageHandler(body.skor40);
-    const ekstrovertAverage = introvertAverageHandler(body.skor40);
-    const kekuatanDanKelemahan = await kekuatanKelemahanHandler(
-      ranks40,
-      this.databaseBakat40,
-    );
-
-    const labelJulukan: LabelJulukan[] = await this.databaseBakat6.find({
-      where: [{ id: ranks6[0] }, { id: ranks6[1] }],
-      select: { id: true, label1: true, label2: true, arab: true, latin: true },
-    });
-    const julukan: Julukan = julukanHandler(ranks6, labelJulukan);
-    const bakat3 = await this.databaseBakat3.find({
-      select: {
-        id: true,
-        arab: true,
-        arti: true,
-        deskripsiGayaBelajar1: true,
-        deskripsiBahasa: true,
-        tempatBelajar: true,
-        gayaBelajar_arab: true,
-        gayaBelajar_arti: true,
-        bahasaHati: true,
-      },
-    });
-    const bakat3SortByRanks3: {
-      deskripsiBahasa: string;
-      id: number;
-      arab: string;
-      arti: string;
-      deskripsiGayaBelajar1: string;
-      tempatBelajar: string;
-      gayaBelajar_arab: string;
-      gayaBelajar_arti: string;
-      bahasaHati: string;
-    }[] = [];
-    ranks3.map((rank3) => {
-      const data =
-        bakat3[bakat3.findIndex((bkt) => bkt.id === ranks3[rank3 - 1])];
-      bakat3SortByRanks3.push(data);
-    });
-    const bakat3_first = bakat3[bakat3.findIndex((b3) => b3.id === ranks3[0])];
-    const kepribadianComponent = kepribadianHandler(
-      bakat3_first,
-      ranks6[0],
-      ranks18[0],
-      nama,
-      introvertAverage,
-      ekstrovertAverage,
-      labelJulukan,
-      kekuatanDanKelemahan,
-      julukan,
-    );
-    const bakatComponent = bakatHandler(nama, kekuatanDanKelemahan);
-    const gayaBelajarComponent = gayaBelajarHandler(nama, bakat3SortByRanks3);
-    const bahasaHatiComponent = bahasaHatiHandler(nama, bakat3SortByRanks3);
-    const potensiSifatTercelaComponent = await potensiSifatTercelaHandler(
-      nama,
-      kekuatanDanKelemahan,
-      this.databasePerbaikan,
-    );
-    const bakat40: { id: number; arti: string; arab: string }[] =
-      await this.databaseBakat40.find({
-        select: { id: true, arti: true, arab: true },
-      });
-    const bakat6Raw = await this.databaseBakat6.find({
-      select: { id: true, arab: true, bakat40_id: true },
-    });
-    const bakat6 = [];
-    bakat6Raw.map(({ id, arab, bakat40_id }, idx) => {
-      const newUrutan = [];
-      bakat40_id
-        .replace('[', '')
-        .replace(']', '')
-        .replace(' ', '')
-        .split(',')
-        .map((data) => {
-          newUrutan.push(Number(data));
-        });
-      bakat6.push({
-        id,
-        arab,
-        bakat40_id: newUrutan,
-      });
-    });
-    // console.log(kekuatanDanKelemahan);
     try {
+      // const nama = body.nama.charAt(0).toUpperCase() + body.nama.slice(1);
+      const ranks40 = bakat40Handler(body.skor40);
+      const ranks18 = bakat18Handler(body.skor40);
+      const ranks6 = bakat6Handler(body.skor40);
+      const ranks3 = bakat3Handler(body.skor40);
+      const introvertAverage = introvertAverageHandler(body.skor40);
+      const ekstrovertAverage = introvertAverageHandler(body.skor40);
+      const kekuatanDanKelemahan = await kekuatanKelemahanHandler(
+        ranks40,
+        this.databaseBakat40,
+      );
+
+      const labelJulukan: LabelJulukan[] = await this.databaseBakat6.find({
+        where: [{ id: ranks6[0] }, { id: ranks6[1] }],
+        select: {
+          id: true,
+          label1: true,
+          label2: true,
+          arab: true,
+          latin: true,
+        },
+      });
+      const julukan: Julukan = julukanHandler(ranks6, labelJulukan);
+      const bakat3 = await this.databaseBakat3.find({
+        select: {
+          id: true,
+          arab: true,
+          arti: true,
+          deskripsiGayaBelajar1: true,
+          deskripsiBahasa: true,
+          tempatBelajar: true,
+          gayaBelajar_arab: true,
+          gayaBelajar_arti: true,
+          bahasaHati: true,
+        },
+      });
+      const bakat3SortByRanks3: {
+        deskripsiBahasa: string;
+        id: number;
+        arab: string;
+        arti: string;
+        deskripsiGayaBelajar1: string;
+        tempatBelajar: string;
+        gayaBelajar_arab: string;
+        gayaBelajar_arti: string;
+        bahasaHati: string;
+      }[] = [];
+      ranks3.map((rank3) => {
+        const data =
+          bakat3[bakat3.findIndex((bkt) => bkt.id === ranks3[rank3 - 1])];
+        bakat3SortByRanks3.push(data);
+      });
+      const bakat3_first =
+        bakat3[bakat3.findIndex((b3) => b3.id === ranks3[0])];
+      const kepribadianComponent = kepribadianHandler(
+        bakat3_first,
+        ranks6[0],
+        ranks18[0],
+        nama,
+        introvertAverage,
+        ekstrovertAverage,
+        labelJulukan,
+        kekuatanDanKelemahan,
+        julukan,
+      );
+      const bakatComponent = bakatHandler(nama, kekuatanDanKelemahan);
+      const gayaBelajarComponent = gayaBelajarHandler(nama, bakat3SortByRanks3);
+      const bahasaHatiComponent = bahasaHatiHandler(nama, bakat3SortByRanks3);
+      const potensiSifatTercelaComponent = await potensiSifatTercelaHandler(
+        nama,
+        kekuatanDanKelemahan,
+        this.databasePerbaikan,
+      );
+      const bakat40: { id: number; arti: string; arab: string }[] =
+        await this.databaseBakat40.find({
+          select: { id: true, arti: true, arab: true },
+        });
+      const bakat6Raw = await this.databaseBakat6.find({
+        select: { id: true, arab: true, bakat40_id: true },
+      });
+      const bakat6 = [];
+      bakat6Raw.map(({ id, arab, bakat40_id }, idx) => {
+        const newUrutan = [];
+        bakat40_id
+          .replace('[', '')
+          .replace(']', '')
+          .replace(' ', '')
+          .split(',')
+          .map((data) => {
+            newUrutan.push(Number(data));
+          });
+        bakat6.push({
+          id,
+          arab,
+          bakat40_id: newUrutan,
+        });
+      });
+      // console.log(kekuatanDanKelemahan);
       return {
         identitas: { nama },
         kepribadian: kepribadianComponent,
