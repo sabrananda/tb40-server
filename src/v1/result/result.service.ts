@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { bakat40Handler } from './handlers/bakat40Handler';
 import { Julukan, LabelJulukan, PostAssesmentDTO } from './result.dto';
-import { bakat18Handler } from './handlers/Bakat18Handler';
+import { bakat18Handler } from './handlers/bakat18Handler';
 import { bakat6Handler } from './handlers/bakat6Handler';
 import { bakat3Handler } from './handlers/bakat3Handler';
 import { introvertAverageHandler } from './handlers/introvertHandler';
