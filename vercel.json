@@ -14,7 +14,7 @@
   ],
 
   "functions": {
-    "*.js": {
+    "dist/*.js": {
       "memory": 3009,
       "maxDuration": 10
     }
