@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { V1Module } from './v1/v1.module';
 import { typeormConfig } from './config/typeorm-sqlite.config';
-
 @Module({
   imports: [V1Module, TypeOrmModule.forRoot(typeormConfig)],
   controllers: [AppController],
