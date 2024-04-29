@@ -31,11 +31,16 @@ export class Bakat40Service {
   }
 
   async getPernyataan(): Promise<Pernyataan[]> {
-    return await this.database.find({
-      select: {
-        id: true,
-        pernyataan: true,
-      },
-    });
+    try {
+      const json = await this.database.find({
+        select: {
+          id: true,
+          pernyataan: true,
+        },
+      });
+      return json;
+    } catch (error) {
+      throw error;
+    }
   }
 }
