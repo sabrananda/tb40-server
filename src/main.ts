@@ -7,12 +7,12 @@ async function bootstrap() {
     app.use(
       cors({
         origin: [
-          'https://tb40.vercel.app/*',
+          'https://tb40.vercel.app/',
           'http://localhost:3000',
           'https://tb40-sabranandas-projects.vercel.app',
         ],
         methods: ['GET', 'POST'],
-        credentials: true,
+        // credentials: true,
       }),
     );
     // app.enableCors({
