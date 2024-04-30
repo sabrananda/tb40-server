@@ -20,7 +20,7 @@ async function bootstrap() {
     //   ]);
     //   next();
     // });
-    app.use(cors({ origin: 'https://tb40.vercel.app' }));
+    app.use(cors());
     // app.enableCors({
     //   origin: [
     //     'https://tb40.vercel.app',
