@@ -18,8 +18,8 @@ async function bootstrap() {
         'Accept',
         'Origin',
       ],
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      preflightContinue: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      //   preflightContinue: true,
       //   credentials: true,
     });
 
