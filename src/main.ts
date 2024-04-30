@@ -13,7 +13,7 @@ async function bootstrap() {
       credentials: true,
       //   allowedHeaders: ['Content-Type', 'Authorization'],
     });
-    await app.listen(3001);
+    await app.listen(3002);
   } catch (error) {
     throw new Error(error);
   }

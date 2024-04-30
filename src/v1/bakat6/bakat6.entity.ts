@@ -4,13 +4,13 @@ import {
   Entity,
   JoinTable,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { Bakat40Entity } from '../bakat40/bakat40.entity';
 
 @Entity()
 export class Bakat6Entity extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column()

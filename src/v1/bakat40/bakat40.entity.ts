@@ -5,14 +5,14 @@ import {
   JoinTable,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { Bakat6Entity } from '../bakat6/bakat6.entity';
 import { PerbaikanEntity } from '../perbaikan/perbaikan.entity';
 
 @Entity()
 export class Bakat40Entity extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column()
