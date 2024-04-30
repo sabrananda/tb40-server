@@ -18,7 +18,7 @@ async function bootstrap() {
       origin: [
         'https://tb40.vercel.app',
         'http://192.168.110.198:3000',
-        'tb40-8o264tsp5-sabranandas-projects.vercel.app',
+        'https://tb40-8o264tsp5-sabranandas-projects.vercel.app',
       ],
       allowedHeaders: ['Content-Type', 'Authorization'],
       methods: ['GET', 'POST'],
