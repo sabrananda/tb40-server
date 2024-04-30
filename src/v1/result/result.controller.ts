@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { PostAssesmentDTO } from './result.dto';
 import { ResultService } from './result.service';
 
@@ -14,12 +14,7 @@ export class ResultController {
     return this.resultService.getDefaultResultStates();
   }
   @Post()
-  getAssessmentResult(
-    @Body() body: PostAssesmentDTO,
-    @Req() req: Request,
-  ): Promise<string> {
-    console.log(req.headers);
-    // console.log(body.nama);
+  getAssessmentResult(@Body() body: PostAssesmentDTO): Promise<string> {
     return this.resultService.getAssessmentResult(body);
   }
 }
