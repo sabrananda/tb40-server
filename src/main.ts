@@ -3,7 +3,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
-
+    app.use((req: Request, res: Response) => {
+      res.headers.set('Access-Control-Allow-Origin', 'https://tb40.vercel.app');
+      res.headers.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+      res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+    });
     app.enableCors({
       //   origin: true,
       origin: [
@@ -21,11 +25,7 @@ async function bootstrap() {
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     });
-    app.use((req, res: Response, next) => {
-      res.headers.set('Access-Control-Allow-Origin', 'https://tb40.vercel.app');
-      res.headers.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-      res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-    });
+
     await app.listen(3002);
   } catch (error) {
     throw new Error(error);
