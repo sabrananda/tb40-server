@@ -19,7 +19,7 @@ async function bootstrap() {
         'Origin',
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      //   preflightContinue: true,
+      preflightContinue: true,
       //   credentials: true,
     });
 
