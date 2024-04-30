@@ -10,11 +10,12 @@ export class ResultController {
     return 'here the result';
   }
   @Get('/getDefaultResultStates')
-  async getDefaultResultStates() {
+  getDefaultResultStates() {
     return this.resultService.getDefaultResultStates();
   }
   @Post()
-  async getAssessmentResult(@Body() body: PostAssesmentDTO): Promise<string> {
+  getAssessmentResult(@Body() body: PostAssesmentDTO): Promise<string> {
+    console.log(body.nama);
     return this.resultService.getAssessmentResult(body);
   }
 }
