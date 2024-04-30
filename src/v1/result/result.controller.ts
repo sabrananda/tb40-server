@@ -14,7 +14,11 @@ export class ResultController {
     return this.resultService.getDefaultResultStates();
   }
   @Post()
-  getAssessmentResult(@Body() body: PostAssesmentDTO): Promise<string> {
+  getAssessmentResult(
+    @Body() body: PostAssesmentDTO,
+    @Req() req: Request,
+  ): Promise<string> {
+    console.log(req.headers);
     return this.resultService.getAssessmentResult(body);
   }
 }
