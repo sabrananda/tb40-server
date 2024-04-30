@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { PostAssesmentDTO } from './result.dto';
 import { ResultService } from './result.service';
+import { Response } from 'express';
 
 @Controller('v1/result')
 export class ResultController {
@@ -14,11 +15,20 @@ export class ResultController {
     return this.resultService.getDefaultResultStates();
   }
   @Post()
-  getAssessmentResult(
+  async getAssessmentResult(
     @Body() body: PostAssesmentDTO,
     @Req() req: Request,
-  ): Promise<string> {
-    console.log(req.headers);
-    return this.resultService.getAssessmentResult(body);
+    @Res() res: Response,
+  ): Promise<Response<any, Record<string, any>>> {
+    // app.use((req: Request, res: Response) => {
+    //     res.headers.set('Access-Control-Allow-Origin', 'https://tb40.vercel.app');
+    //     res.headers.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+    //     res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+    //   });
+    const out = await this.resultService.getAssessmentResult(body);
+    res
+      .set({ 'Access-Control-Allow-Origin': 'https://tb40.vercel.app' })
+      .json(out);
+    return res;
   }
 }
