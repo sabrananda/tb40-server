@@ -27,7 +27,7 @@ export class ResultController {
     //   });
     const out = await this.resultService.getAssessmentResult(body);
     res
-      .setHeader('Access-Control-Allow-Origin', 'https://tb40.vercel.app')
+      // .setHeader('Access-Control-Allow-Origin', '*')
       .json(out);
     return res;
   }
