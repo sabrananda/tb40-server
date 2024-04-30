@@ -4,13 +4,12 @@ async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule, { cors: true });
     app.use((req, res, next) => {
-      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Origin', 'https://tb40.vercel.app');
       res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
       next();
     });
     // app.enableCors({
-    //   //   origin: true,
     //   origin: [
     //     'https://tb40.vercel.app',
     //     'http://192.168.110.198:3000',
