@@ -24,10 +24,6 @@ export class ResultController {
     return this.resultService.getDefaultResultStates();
   }
 
-  @Options()
-  @Header('Access-Control-Allow-Origin', '*')
-  getOp() {}
-
   @Post()
   @Header('Access-Control-Allow-Origin', '*')
   async getAssessmentResult(
