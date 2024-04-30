@@ -14,7 +14,7 @@ async function bootstrap() {
     //   //   allowedHeaders: ['Content-Type', 'Authorization'],
     // });
     app.enableCors({
-      origin: 'https://tb40.vercel.app',
+      origin: ['https://tb40.vercel.app', 'http://192.168.110.198:3000'],
       allowedHeaders: ['Content-Type', 'Authorization'],
       methods: ['GET', 'POST'],
       credentials: true,

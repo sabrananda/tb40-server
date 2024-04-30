@@ -6,7 +6,7 @@ import { bakat6Handler } from './handlers/bakat6Handler';
 import { bakat3Handler } from './handlers/bakat3Handler';
 import { introvertAverageHandler } from './handlers/introvertHandler';
 import { InjectRepository } from '@nestjs/typeorm';
-import { And, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Bakat40Entity } from '../bakat40/bakat40.entity';
 import { kekuatanKelemahanHandler } from './handlers/kekuatanKelemahanHandler';
 import { Bakat6Entity } from '../bakat6/bakat6.entity';
