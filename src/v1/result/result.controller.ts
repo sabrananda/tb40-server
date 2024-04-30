@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Header, Post, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Header,
+  Options,
+  Post,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { PostAssesmentDTO } from './result.dto';
 import { ResultService } from './result.service';
 // import { Response } from 'express';
@@ -14,6 +23,11 @@ export class ResultController {
   getDefaultResultStates() {
     return this.resultService.getDefaultResultStates();
   }
+
+  @Options()
+  @Header('Access-Control-Allow-Origin', '*')
+  getOp() {}
+
   @Post()
   @Header('Access-Control-Allow-Origin', '*')
   async getAssessmentResult(
