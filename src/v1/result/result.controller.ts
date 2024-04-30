@@ -26,9 +26,7 @@ export class ResultController {
     //     res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
     //   });
     const out = await this.resultService.getAssessmentResult(body);
-    res
-      // .setHeader('Access-Control-Allow-Origin', '*')
-      .json(out);
+    res.setHeader('Access-Control-Allow-Origin', '*').json(out);
     return res;
   }
 }

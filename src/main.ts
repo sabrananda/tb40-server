@@ -23,7 +23,7 @@ async function bootstrap() {
       //   credentials: true,
     });
 
-    await app.listen(3000);
+    await app.listen(3002);
   } catch (error) {
     throw new Error(error);
   }
