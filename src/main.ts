@@ -13,7 +13,12 @@ async function bootstrap() {
     //   credentials: true,
     //   //   allowedHeaders: ['Content-Type', 'Authorization'],
     // });
-    app.enableCors({ origin: 'https://tb40.vercel.app' });
+    app.enableCors({
+      origin: 'https://tb40.vercel.app',
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      methods: ['GET', 'POST'],
+      credentials: true,
+    });
     await app.listen(3002);
   } catch (error) {
     throw new Error(error);
