@@ -71,6 +71,7 @@ export class ResultService {
           bahasaHati: true,
         },
       });
+      bakat3.sort((a, b) => a.id - b.id);
       const bakat3SortByRanks3: {
         deskripsiBahasa: string;
         id: number;
@@ -112,6 +113,7 @@ export class ResultService {
         await this.databaseBakat40.find({
           select: { id: true, arti: true, arab: true },
         });
+      bakat40.sort((a, b) => a.id - b.id);
       const bakat6Raw = await this.databaseBakat6.find({
         select: { id: true, arab: true, bakat40_id: true },
       });
@@ -131,6 +133,7 @@ export class ResultService {
           arab,
           bakat40_id: newUrutan,
         });
+        bakat6.sort((a, b) => a.id - b.id);
       });
       // console.log(kekuatanDanKelemahan);
       return {
