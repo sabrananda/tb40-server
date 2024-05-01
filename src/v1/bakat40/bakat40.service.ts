@@ -12,7 +12,7 @@ export class Bakat40Service {
   ) {}
 
   async getBakat40(): Promise<Bakat40DTO[]> {
-    return await this.database
+    const result = await this.database
       .createQueryBuilder('bakat40')
       .leftJoinAndSelect('bakat40.perbaikan', 'perbaikan')
       .addOrderBy('bakat40.id', 'ASC')
@@ -28,6 +28,8 @@ export class Bakat40Service {
       //   .leftJoinAndSelect('bakat40.bakat6', 'bakat6')
       .addOrderBy('perbaikan.id', 'ASC')
       .getMany();
+    result.sort((a, b) => a.id - b.id);
+    return result;
   }
 
   async getPernyataan(): Promise<Pernyataan[]> {
