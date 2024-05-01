@@ -28,7 +28,6 @@ export class Bakat40Service {
       //   .leftJoinAndSelect('bakat40.bakat6', 'bakat6')
       .addOrderBy('perbaikan.id', 'ASC')
       .getMany();
-    result.sort((a, b) => a.id - b.id);
     return result;
   }
 
@@ -40,6 +39,7 @@ export class Bakat40Service {
           pernyataan: true,
         },
       });
+      json.sort((a, b) => a.id - b.id);
       return json;
     } catch (error) {
       throw error;
