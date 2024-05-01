@@ -159,12 +159,14 @@ export class ResultService {
       await this.databaseBakat40.find({
         select: { id: true, arti: true, arab: true },
       });
+    bakat40.sort((a, b) => a.id - b.id);
     const bakat6Raw = await this.databaseBakat6.find({
       select: { id: true, arab: true, bakat40_id: true },
     });
     const bakat3 = await this.databaseBakat3.find({
       select: { id: true, arab: true },
     });
+    bakat3.sort((a, b) => a.id - b.id);
     const bakat6 = [];
     bakat6Raw.map(({ id, arab, bakat40_id }, idx) => {
       const newUrutan = [];
@@ -182,6 +184,11 @@ export class ResultService {
         bakat40_id: newUrutan,
       });
     });
-    return { bakat6, bakat3, bakat40 };
+    bakat6.sort((a, b) => a.id - b.id);
+    return {
+      bakat6,
+      bakat3,
+      bakat40,
+    };
   }
 }
